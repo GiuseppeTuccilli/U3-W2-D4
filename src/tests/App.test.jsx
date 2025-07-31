@@ -1,13 +1,5 @@
-import {
-  render,
-  screen,
-  fireEvent,
-  getAllByText,
-  queryAllByAltText,
-  queryAllByText,
-} from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import fantasy from "../data/fantasy.json";
 
 import App from "../App";
 
