@@ -3,13 +3,15 @@ import {
   screen,
   fireEvent,
   getAllByText,
+  queryAllByAltText,
+  queryAllByText,
 } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import fantasy from "../data/fantasy.json";
 
 import App from "../App";
 
-describe("checks Navbar filtering and border color", () => {
+describe("checks Navbar filtering , border color and comments", () => {
   it("checks nav filter", () => {
     render(<App />);
     const search = screen.getByPlaceholderText("Cerca un libro");
@@ -31,6 +33,12 @@ describe("checks Navbar filtering and border color", () => {
     fireEvent.click(cards[0]);
     fireEvent.click(cards[1]);
     expect(cards[0]).toHaveStyle("border:none");
+  });
+
+  it("checks that no comment are shown at the first rendering", () => {
+    render(<App />);
+    const commentButtons = screen.queryAllByText("Elimina");
+    expect(commentButtons).toHaveLength(0);
   });
 
   it("checks that comments are rendered", async () => {
